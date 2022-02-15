@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check Out Repo 
+      - name: Check Out Repo
         uses: actions/checkout@v2
       - run: docker build ./. -t flask-minified
       - run: curl -L -O https://downloads.dockerslim.com/releases/1.37.3/dist_linux.tar.gz
@@ -21,10 +21,15 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
-          username: antyung88
+          username: ${{ github.actor }}
           password: ${{ secrets.GH_TOKEN }}
       - name: Build image and push to Docker Hub and GitHub Container Registry
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: ./
+          tags: |
+            ghcr.io/antyung88/flask-minified.slim
           push: true
+
+
+
