@@ -12,24 +12,22 @@ jobs:
     steps:
       - name: Check Out Repo
         uses: actions/checkout@v2
+        
       - run: docker build ./. -t flask-minified
       - run: curl -L -O https://downloads.dockerslim.com/releases/1.37.3/dist_linux.tar.gz
       - run: tar -zxvf dist_linux.tar.gz
       - run: script -q -c "./dist_linux/docker-slim --debug version"
-      - run: script -q -c "./dist_linux/docker-slim build --target flask-minified --http-probe-off --tag flask-minified"
+      - run: script -q -c "./dist_linux/docker-slim build --target flask-minified --http-probe-off --tag flask-minified.slim"
+      
       - name: Login to Github Packages
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GH_TOKEN }}
-      - name: Build image and push to Docker Hub and GitHub Container Registry
-        uses: docker/build-push-action@v2
-        with:
-          context: ./
-          tags: |
-            ghcr.io/antyung88/flask-minified.slim
-          push: true
-
+          
+      - name: Push
+        run: |
+          docker push ghcr.io/antyung88/flask-minified.slim
 
 
