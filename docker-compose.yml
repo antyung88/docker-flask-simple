@@ -1,0 +1,8 @@
+#docker-compose.yml
+version: "3.3"
+services:
+  app:
+    container_name: flask-minified
+    image: ghcr.io/page1337com/flask-minified/flask-minified.slim:latest
+    ports:
+      - "8080:8080"
