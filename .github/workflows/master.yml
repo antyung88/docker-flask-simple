@@ -26,7 +26,5 @@ jobs:
       - name: Build image and push to Docker Hub and GitHub Container Registry
         uses: docker/build-push-action@v2
         with:
-          context: ./
-          tags: |
-            ghcr.io/antyung88/flask-minified.slim
-          push: ${{ github.ref == 'refs/heads/main' }}
+          context: .
+          push: true
