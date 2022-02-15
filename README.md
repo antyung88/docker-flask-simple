@@ -4,7 +4,7 @@ Docker Slim with Multistage Build in Github Actions 16.7MB
 ```
 REPOSITORY            TAG          IMAGE ID       CREATED              SIZE
 flask-minified.slim   latest       badab2bbdd27   About a minute ago   16.7MB
-flask-minified        latest       de08b65b0be2   About a minute ago   65.4MB
+flask                 latest       de08b65b0be2   About a minute ago   65.4MB
 python                3.9-alpine   1b2eadcedc98   About a minute ago   48.3MB
 ```
 
