@@ -1,5 +1,5 @@
 ## base image
-FROM python:3.9-alpine AS compile-image
+FROM python:3.10-alpine AS compile-image
 
 ## virtualenv
 ENV VIRTUAL_ENV=/opt/venv
@@ -11,7 +11,7 @@ COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
 ## build-image
-FROM python:3.9-alpine AS runtime-image
+FROM python:3.10-alpine AS runtime-image
 
 ## copy Python dependencies from build image
 COPY --from=compile-image /opt/venv /opt/venv
