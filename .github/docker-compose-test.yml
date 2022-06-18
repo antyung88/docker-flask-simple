@@ -1,0 +1,8 @@
+#docker-compose.yml
+version: "3.3"
+services:
+  app-test:
+    container_name: flask-minified-test
+    image: ghcr.io/antyung88/flask-minified:test
+    ports:
+      - "8080:8080"
