@@ -2,7 +2,7 @@
 version: "3.3"
 services:
   app-test-slim:
-    container_name: flask-minified-test-slim
-    image: ghcr.io/antyung88/flask-minified:testslim2
+    container_name: flask-simple-test-slim
+    image: ghcr.io/antyung88/flask-simple:testslim2
     ports:
       - "8080:8080"
