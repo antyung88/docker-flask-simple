@@ -21,7 +21,8 @@ jobs:
           docker build . -t ghcr.io/${{ secrets.USER }}/${{ secrets.IMAGE }}:test
           docker-compose -f .github/docker-compose-test.yml up -d
           sleep 5
-          curl --fail localhost:8080 | exit 1
+          docker logs flask-simple-test 2>&1 | grep "Running on http"
+          docker logs flask-simple-test
 
   build-slim:
     name: Build Slim Image
@@ -43,4 +44,5 @@ jobs:
           script -q -c "./dist_linux/docker-slim build --target ghcr.io/${{ secrets.USER }}/${{ secrets.IMAGE }}:testslim --http-probe-off --tag ghcr.io/${{ secrets.USER }}/${{ secrets.IMAGE }}:testslim2"
           docker-compose -f .github/docker-compose-test-slim.yml up -d
           sleep 5
-          curl --fail localhost:8080 | exit 1
+          docker logs flask-simple-test-slim 2>&1 | grep "Running on http"
+          docker logs flask-simple-test-slim
