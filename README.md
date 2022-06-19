@@ -1,4 +1,4 @@
-# docker-flask-simple 
+# docker-flask-simple [![Release Github Packages](https://github.com/antyung88/docker-flask-simple/actions/workflows/release.yml/badge.svg)](https://github.com/antyung88/docker-flask-simple/actions/workflows/release.yml)
 
 Simple Flask in Docker with Multistage Build in Github Actions
 
